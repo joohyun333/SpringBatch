@@ -28,6 +28,8 @@ public class ExecutionContextTasklet1 implements Tasklet {
             stepExecutionContext.put("stepName", stepName);
         }
 
+        Thread.sleep(3000);
+
 
         System.out.println("jobName : " + jobExecutionContext.get("jobName"));
         System.out.println("stepName : " + stepExecutionContext.get("stepName"));

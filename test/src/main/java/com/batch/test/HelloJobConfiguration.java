@@ -1,6 +1,7 @@
 package com.batch.test;
 
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -18,6 +19,7 @@ public class HelloJobConfiguration {
     @Autowired private ExecutionContextTasklet2 executionContextTasklet2;
     @Autowired private ExecutionContextTasklet3 executionContextTasklet3;
     @Autowired private ExecutionContextTasklet4 executionContextTasklet4;
+    @Autowired private JobExecutionListener jobExecutionListener;
 
     @Bean
     public Job helloJob(){
@@ -26,6 +28,7 @@ public class HelloJobConfiguration {
                 .next(step2())
                 .next(step3())
                 .next(step4())
+                .listener(jobExecutionListener)
                 .build();
     }
     @Bean
